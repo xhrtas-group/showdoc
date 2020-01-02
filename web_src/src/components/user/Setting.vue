@@ -194,13 +194,9 @@ export default {
   mounted(){
     
     this.get_user_info();
-    /*给body添加类，设置背景色*/
-    document.getElementsByTagName("body")[0].className="grey-bg";
   },
 
   beforeDestroy(){
-    /*去掉添加的背景色*/
-    document.body.removeAttribute("class","grey-bg");
   }
   
 }
@@ -216,7 +212,7 @@ export default {
 .center-card{
   text-align: center;
   width: 600px;
-  height: 500px;
+  height: 400px;
 }
 
 .goback-btn{
@@ -227,7 +223,7 @@ export default {
 .infoForm{
   width: 350px;
   margin: 0 auto ;
-  margin-top: 30px;
+  margin-top: 50px;
   text-align: left;
 }
 </style>

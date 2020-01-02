@@ -88,12 +88,8 @@ export default {
       }
   },
   mounted() {
-    /*给body添加类，设置背景色*/
-    document.getElementsByTagName("body")[0].className="grey-bg";
   },
   beforeDestroy(){
-    /*去掉添加的背景色*/
-    document.body.removeAttribute("class","grey-bg");
   }
 }
 </script>

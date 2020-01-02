@@ -179,7 +179,6 @@ exports.default = {
     'cancel':'取消',
     'update_time':'修改时间',
     'update_by_who':'修改人',
-    'operation':'操作',
     'recover_to_this_version':'恢复到此版本',
     'close':'关闭',
     'finish':'完成',
@@ -295,5 +294,18 @@ exports.default = {
     "create_sigle_page":"我要创建单页面地址",
     "create_sigle_page_tips":"当仅仅想分享某个页面、而不想分享整个项目的时候，你可以选择分享单页面地址。分享出去后，你的好友将仅仅只看到单个页面，无法浏览目录菜单，也无法切换到其他页面查看。",
 
+    "home_page":"网站首页",
+    "full_page":"全屏介绍页面",
+    "login_page":"跳转到登录页面",
+    "jump_to_an_item":"跳转到某个项目",
+    "jump_to_item":"跳转到项目",
+
+    "recycle":"回收站",
+    "recycle_tips":"被删除的页面会进入回收站。在回收站超过3天的内容将被系统自动选择合适时候清理掉",
+    "page_title":"页面标题",
+    "deleter":"删除账号",
+    "del_time":"删除时间",
+    "recover":"恢复",
+    "recover_tips":"确认恢复吗？恢复的页面将出现在项目根目录",
 
 };

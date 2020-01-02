@@ -174,7 +174,6 @@ exports.default = {
     'cancel':'Cancel',
     'update_time':'Update time',
     'update_by_who':'Update by ',
-    'operation':'Operation',
     'recover_to_this_version':'Recover',
     'close':'Close',
     'finish':'Finish',
@@ -287,5 +286,20 @@ exports.default = {
 
     "create_sigle_page":"I want to create a single page address",
     "create_sigle_page_tips":"When you just want to share a page and not the whole project, you can choose to share a single page address. After sharing, your friends will only see a single page, can not browse the catalog menu, and can not switch to other pages to view.",
+    
+    "home_page":"Website home page",
+    "full_page":"Full page",
+    "login_page":"jump to login page",
+    "jump_to_an_item":"jump to an item",
+    "jump_to_item":"choose item",
+
+    "recycle":"recycle",
+    "recycle_tips":"The deleted page will go to the recycle bin. The content in the recycle bin for more than 3 days will be automatically selected by the system and cleaned up when appropriate",
+    "page_title":"Page title",
+    "deleter":"Delete Account",
+    "del_time":"Delete time",
+    "recover":"recover",
+    "recover_tips":"Are you sure to recover? The recovered page will appear in the item root",
+
 
 };

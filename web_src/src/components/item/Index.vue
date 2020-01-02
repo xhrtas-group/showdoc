@@ -20,6 +20,8 @@
               </span>
               <el-dropdown-menu slot="dropdown">
                 <el-dropdown-item><router-link to="/user/setting">{{$t("personal_setting")}}</router-link></el-dropdown-item>
+                <el-dropdown-item><a target="_blank" v-if="lang =='zh-cn'"  href="https://www.showdoc.cc/app">Apps</a></el-dropdown-item>
+                <el-dropdown-item><a target="_blank" v-if="lang =='zh-cn'"  href="http://runapi.showdoc.cc/">RunApi</a></el-dropdown-item>
                 <el-dropdown-item :command="logout">{{$t("logout")}}</el-dropdown-item>
               </el-dropdown-menu>
             </el-dropdown>
@@ -36,11 +38,12 @@
         <div class="container-thumbnails">
 
           <div class="search-box-div" v-if="itemList.length > 9">
-              <el-input 
-                class="search-box"
-                v-model="keyword">
-                <i slot="prefix" class="el-input__icon el-icon-search"></i>
-              </el-input>
+              <div class="search-box el-input el-input--prefix">
+                <input autocomplete="off" type="text" rows="2" validateevent="true" class="el-input__inner" v-model="keyword">
+                <span class="el-input__prefix">
+                  <i class="el-input__icon el-icon-search"></i>
+                </span>
+              </div>
           </div>
 
           <ul class="thumbnails" id="item-list" v-if="itemListByKeyword">
@@ -80,7 +83,7 @@
 
   .container-narrow{
     margin: 0 auto;
-    max-width: 700px;
+    max-width: 930px;
   }
 
   .masthead{
@@ -98,7 +101,7 @@
 
   .container-thumbnails{
     margin-top: 30px;
-    max-width: 700px;
+    max-width: 1000px;
   }
 
   .my-item{
@@ -112,7 +115,7 @@
     }
 
   .thumbnails li a{
-    color: #777;
+    color: #444;
     font-weight: bold;
     height: 100px;
     width: 180px;
@@ -142,6 +145,7 @@
     -o-transition: all .2s ease-in-out;
     transition: all .2s ease-in-out;
     list-style: none;
+    background-color: #ffffff;
   }
 
   .item-setting{
@@ -188,7 +192,8 @@ export default {
       currentDate: new Date(),
       itemList:{},
       isAdmin:false,
-      keyword:''
+      keyword:'',
+      lang:''
     };
   },
   computed:{
@@ -361,6 +366,10 @@ export default {
         };
         this.sort_item(data);
       })
+    },
+    script_cron(){
+      var url = DocConfig.server+'/api/ScriptCron/run';
+      this.axios.get(url);
     }
 
   },
@@ -368,13 +377,11 @@ export default {
     this.get_item_list();
     this.user_info();
     this.dragging();
-
-
+    this.lang = DocConfig.lang ;
+    this.script_cron();
   },
   beforeDestroy(){
     this.$message.closeAll();
-    /*去掉添加的背景色*/
-    document.body.removeAttribute("class","grey-bg");
   }
 }
 </script>

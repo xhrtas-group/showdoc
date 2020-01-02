@@ -34,6 +34,15 @@
 
             </el-tab-pane>
 
+            <el-tab-pane :label="$t('recycle')" name="five">
+
+                  <Recycle > </Recycle >
+                  
+                </el-form>
+
+            </el-tab-pane>
+
+
             </el-tabs>
           </template>
           </el-card>
@@ -50,13 +59,16 @@ import Info from '@/components/item/setting/Info'
 import Member from '@/components/item/setting/Member'
 import Advanced from '@/components/item/setting/Advanced'
 import OpenApi from '@/components/item/setting/OpenApi'
+import Recycle from '@/components/item/setting/Recycle'
+
 export default {
   name: 'Login',
   components : {
     Info,
     Member,
     Advanced,
-    OpenApi
+    OpenApi,
+    Recycle
   },
   data () {
     return {
@@ -94,15 +106,8 @@ export default {
   },
 
   mounted(){
-    
-  },
-  beforeCreate() {
-    /*给body添加类，设置背景色*/
-    document.getElementsByTagName("body")[0].className="grey-bg";
   },
   beforeDestroy(){
-    /*去掉添加的背景色*/
-    document.body.removeAttribute("class","grey-bg");
   }
 }
 </script>
@@ -116,9 +121,9 @@ export default {
 
 .center-card{
   text-align: center;
-  width: 600px;
-  min-height: 500px;
-  max-height: 700px;
+  width: 800px;
+  min-height: 600px;
+  max-height: 800px;
 }
 
 .infoForm{
@@ -129,6 +134,6 @@ export default {
 
 .goback-btn{
   z-index: 999;
-  margin-left: 500px;
+  margin-left: 600px;
 }
 </style>

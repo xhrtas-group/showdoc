@@ -5,7 +5,7 @@
       <div class="row header  ">
         <div class="right pull-right">
           <ul class="inline pull-right">
-          <li ><router-link :to="link">{{link_text}}</router-link></li>
+          <li ><router-link :to="link">{{link_text}}</router-link> &nbsp;&nbsp;&nbsp;<a target="_blank" v-if="lang =='zh-cn'" href="https://www.showdoc.cc/app">App</a></li>
                 </ul>
           </div>  
         </div>
@@ -91,7 +91,8 @@ export default {
     return {
       height: '',
       link:'',
-      link_text:''
+      link_text:'',
+      lang:""
     }
   },
   methods:{
@@ -103,11 +104,36 @@ export default {
           var winHeight = document.body.clientHeight;
        }
         this.height = winHeight+'px' ;
-      }
+      },
+    homePageSetting(){
+      var url = DocConfig.server+'/api/common/homePageSetting';
+      this.axios.post(url, this.form)
+        .then( (response) =>{
+          if (response.data.error_code === 0 ) {
+            if (response.data.data.home_page == 2) {
+              //跳转到登录页面
+              this.$router.replace({
+                path: "/user/login"
+              });
+            };
+            if (response.data.data.home_page == 3 && response.data.data.home_item ) {
+              //跳转到指定项目
+              this.$router.replace({
+                path: "/"+response.data.data.home_item 
+              });
+            };
+
+          }
+          
+        });
+    },
+
   },
   mounted () {
     var that = this ;
+    this.lang = DocConfig.lang ;
     this.getHeight();
+    this.homePageSetting();
     that.link = '/user/login';
     that.link_text = that.$t("index_login_or_register");
     this.get_user_info(function(response){
@@ -131,7 +157,7 @@ export default {
   }
 
   .header{
-   padding-right: 100px;
+   padding-right: 50px;
    padding-top: 30px;
    font-size: 18px; 
    position: fixed;
@@ -146,7 +172,8 @@ export default {
       font-weight: bold;
   }
   .slide{
-    width: 700px;
+    width:100%;
+    max-width: 700px;
     position  : absolute;
     top       : 50%;
     left      : 50%;
@@ -156,6 +183,12 @@ export default {
     padding-right: 15px;
     padding-bottom: 0px;
     box-sizing: border-box;
+  }
+
+  @media only screen and (max-width: 800px) {
+    .slide p {
+      font-size: 14px;
+    }
   }
 
 </style>

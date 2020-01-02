@@ -61,7 +61,7 @@ export default {
             this.$nextTick(() => {
                 setTimeout(function(){
                     $(".markdown-toc").click();
-                },500);
+                },200);
             });
         }
 
@@ -90,17 +90,17 @@ export default {
     z-index: 1;
 }
 .page_content_main .markdown-toc:before {
+    display: none; /*先隐藏*/
     content:"\e63f";
     font-family: element-icons !important;
     color: #909399;
     position: absolute;
-    bottom: 0;
-    right: 0;
+    top: 0;
     width: 32px;
     height: 32px;
     line-height: 32px;
     text-align: center;
-    background: #fff;
+    background: #fafafa;
     border: 1px solid #DCDFE6;
     border-radius: 5px;
     cursor: pointer;
@@ -108,30 +108,31 @@ export default {
     transition: .25s;
 }
 .page_content_main .markdown-toc.open-list:before {
-    border: 1px solid #40a9ff;
-    color: #40a9ff;
+    border: 1px solid #DCDFE6;
+    color: #909399;
     border-radius: 50%;
 }
 .page_content_main .markdown-toc > .markdown-toc-list {
     position: relative;
     z-index: 999;
     margin: 0;
+    margin-top: 20px;
     list-style: none;
     min-width: 150px;
-    max-width: 230px;
+    max-width: 200px;
     padding: 5px 0;
-    background: #fff;
+    background: #fafafa;
     border: 1px solid #DCDFE6;
     border-radius: 5px;
     box-shadow: 0 5px 5px #F2F6FC;
-    max-height: 400px;
+    max-height: 320px;
     overflow-y: auto;
     transform: scale(0);
     margin-right: -230px;
     margin-bottom: -270px;
     opacity: 0;
     visibility: hidden;
-    transform-origin: bottom right;
+    transform-origin: top left;
     transition: .25s ease 0s, margin-right 0s ease .25s, margin-bottom 0s ease .25s;
 }
 .page_content_main .markdown-toc.open-list .markdown-toc-list {
@@ -148,7 +149,7 @@ export default {
 .page_content_main .markdown-toc li a {
     display: block;
     padding: 3px 15px;
-    font-size: 14px;
+    font-size: 12px;
     color: #606266;
     white-space: nowrap;
     text-overflow: ellipsis;

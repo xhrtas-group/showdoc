@@ -48,7 +48,6 @@ label:hover {
   padding: 1em;
 }
 #diffoutput {
-    width: 835px;
     margin: 0 auto;
 }
 
@@ -131,7 +130,9 @@ export default {
       
     })
 
-
+  },
+  beforeDestroy(){
   }
+  
 }
 </script>
